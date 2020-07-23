@@ -1,8 +1,5 @@
-default: main.o
-	g++ main.o -lsfml-graphics -lsfml-window -lsfml-system -o zeta
+default: build/main.o
+	g++ build/main.o -lsfml-graphics -lsfml-window -lsfml-system -o build/zeta
 
-main.o: src/main.cpp
-	g++ -c src/main.cpp -o main.o
-
-clean:
-	rm *.o
+build/main.o: src/main.cpp
+	g++ -c src/main.cpp -o build/main.o
