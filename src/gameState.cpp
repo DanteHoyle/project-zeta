@@ -18,9 +18,15 @@ GameState::GameState()
         std::cout << "Error, could not load grass.png\n";
     }
 
+    if (!t_wall.loadFromFile("textures/wall.png"))
+    {
+        std:: cout << "Error, could not load wall.png\n";
+    }
+
     // loads sprites with textures
     s_empty.setTexture(t_empty);
     s_grass.setTexture(t_grass);
+    s_wall.setTexture(t_wall);
 
 }
 
@@ -58,6 +64,9 @@ void GameState::drawTile(int x, int y, sf::RenderWindow &window)
         case GRASS:
             drawTile = &s_grass;
             break;
+        case WALL:
+            drawTile = &s_wall;
+            break;
     }
 
     drawTile->setPosition(x * SPRITE_SIZE, y * SPRITE_SIZE);
@@ -69,5 +78,6 @@ void GameState::clearTiles()
     for (int i = 0; i < TILE_AREA; i++)
     {
         tileSet[i] = EMPTY;
+        solidTiles[i] = false;
     }
 }

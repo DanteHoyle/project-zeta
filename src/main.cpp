@@ -5,22 +5,22 @@
 #include "constants.hpp"
 #include "gameState.hpp"
 #include "input.hpp"
+#include "player.hpp"
 
 int main()
 {
     // window and view
     sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Project Zeta");
-
     sf::View camera(sf::FloatRect(0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT));
-
     window.setView(camera);
     window.setFramerateLimit(FRAME_LIMIT);
 
-
+    // Game Objects
     GameState gameState;
-    Input input(&window, &camera, &gameState);
-    int counter = 0;
+    Player player(1, 1, &gameState, &window);
+    Input input(&window, &camera, &gameState, &player);
 
+    // Game Loop
     while (window.isOpen())
     {
         // This block handles events and sends them to the input handler
@@ -32,6 +32,10 @@ int main()
                 case sf::Event::Closed:
                     window.close();
                     break;
+                
+                case sf::Event::KeyPressed:
+                    input.keyDown(ev.key.code);
+                    break;
             }
         }
 
@@ -39,11 +43,14 @@ int main()
         input.handleInput();
         
         window.clear(sf::Color::Black);
+
+        // temporary rendering logic
         for (int i = 0; i < 60; i++)
             for (int j = 0; j < 60; j++)
                 gameState.drawTile(j, i, window);
+        
+        player.draw();
 
         window.display();
-
     }
 }
