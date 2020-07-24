@@ -1,5 +1,8 @@
-default: build/main.o
-	g++ build/main.o -lsfml-graphics -lsfml-window -lsfml-system -o build/zeta
+default: build/main.o build/gameState.o
+	g++ build/main.o build/gameState.o -o build/zeta
 
 build/main.o: src/main.cpp
 	g++ -c src/main.cpp -o build/main.o
+
+build/gameState.o: src/gameState.cpp
+	g++ -c src/gameState.cpp -o build/gameState.o
