@@ -25,6 +25,8 @@ public:
     bool isSolid(int x, int y);
     void setSolid(int x, int y, bool solid);
 
+    void clearTiles();
+
 private:
     int tileSet[TILE_AREA];
     bool solidTiles[TILE_AREA];

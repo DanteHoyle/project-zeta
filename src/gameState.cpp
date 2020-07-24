@@ -5,12 +5,7 @@
 
 GameState::GameState()
 {
-    // set tiles to empty TEMPORARY
-    // eventually we'll load the map first
-    for (int i = 0; i < TILE_AREA; i++)
-    {
-        tileSet[i] = EMPTY;
-    }
+    clearTiles();
 
     // Load textures to memory
     if (!t_empty.loadFromFile("textures/empty.png"))
@@ -53,6 +48,7 @@ void GameState::setSolid(int x, int y, bool solid)
 void GameState::drawTile(int x, int y, sf::RenderWindow &window)
 {
     sf::Sprite *drawTile = nullptr;
+
     switch(tileSet[x + TILE_WIDTH * y])
     {
         case EMPTY:
@@ -66,4 +62,12 @@ void GameState::drawTile(int x, int y, sf::RenderWindow &window)
 
     drawTile->setPosition(x * SPRITE_SIZE, y * SPRITE_SIZE);
     window.draw(*drawTile);
+}
+
+void GameState::clearTiles()
+{
+    for (int i = 0; i < TILE_AREA; i++)
+    {
+        tileSet[i] = EMPTY;
+    }
 }

@@ -32,6 +32,13 @@ void Input::handleInput()
         window->setView(*view);
     }
 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+    {
+        gameState->clearTiles();
+    }
+
+    
+
     /**** Mouse Input *****/
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {
