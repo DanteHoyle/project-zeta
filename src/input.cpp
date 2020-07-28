@@ -47,26 +47,7 @@ void Input::handleInput()
         gameState->setTile(worldPos.x / SPRITE_SIZE, worldPos.y / SPRITE_SIZE, WALL);
         gameState->setSolid(worldPos.x / SPRITE_SIZE, worldPos.y / SPRITE_SIZE, true);
     }
-
-    // // player movement
-    // if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-    // {
-    //     player->move(0, -1);
-    // }
-    // else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-    // {
-    //     player->move(0, 1);
-    // }
-
-    // if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-    // {
-    //     player->move(-1, 0);
-    // }
-    // else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-    // {
-    //     player->move(1, 0);
-    // }
-
+    
     /**** Mouse Input *****/
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {

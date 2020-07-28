@@ -32,16 +32,17 @@ int main()
                 case sf::Event::Closed:
                     window.close();
                     break;
-                
+                // Key Down used for player actions
                 case sf::Event::KeyPressed:
                     input.keyDown(ev.key.code);
                     break;
             }
         }
 
-        // test input
+        // Get and update player input
         input.handleInput();
         
+        // Clear the screen
         window.clear(sf::Color::Black);
 
         // temporary rendering logic
