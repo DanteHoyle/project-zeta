@@ -8,24 +8,28 @@
 // Project files
 #include "gameState.hpp"
 #include "constants.hpp"
-
+#include "player.hpp"
 
 class Entity
 {
 public:
-    Entity(int x, int y, GameState *state, sf::RenderWindow *renderWindow);
+    Entity(int x, int y, GameState *state, sf::RenderWindow *renderWindow, Player *targetPlayer, sf::Texture *texture);
 
     int tileX, tileY;
 
     void draw();
-    virtual void move();
+    virtual void update();
+
+    void drawAll();
+    void updateAll();
 
     static std::vector<Entity*> entityList;
     
 private:
     GameState *gameState;
     sf::RenderWindow *window;
-    sf::Texture entity_Texture;
+    Player *player;
+    sf::Texture *entity_Texture;
     sf::Sprite entity_Sprite;
 };
 
